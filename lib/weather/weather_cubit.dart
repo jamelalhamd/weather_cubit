@@ -13,7 +13,7 @@ class WeatherCubit extends Cubit<WeatherState> {
 
   WeatherModal? weatherModal1;
 
-         void getweather (String city) async {
+       Future <void> getweather (String city) async {
     emit(Weatherloading());
 
     String uri='https://api.weatherapi.com/v1/forecast.json?key=34cba36f53ca49108a0205029230908&q=$city&days=1&aqi=no&alerts=no';

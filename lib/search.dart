@@ -42,7 +42,7 @@ class _SearchState extends State<Search> {
 
             onPressedicon: () async {
               try {
-               blk.getweather(blk.city_name!);
+              await blk.getweather(blk.city_name!);
 
 
 
