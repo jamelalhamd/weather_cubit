@@ -24,6 +24,13 @@ class _weatherscreenState extends State<weatherscreen> {
       builder: (context, state) {
 
         WeatherCubit blk=BlocProvider.of<WeatherCubit>(context);
+
+        if(state is Weatherloading ) return Center(
+
+          child: CircularProgressIndicator(),
+        );
+
+        else
         return Scaffold(
           backgroundColor: Colors.orangeAccent.shade100,
 
