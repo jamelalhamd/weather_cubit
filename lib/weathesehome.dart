@@ -25,12 +25,40 @@ class _weatherscreenState extends State<weatherscreen> {
 
         WeatherCubit blk=BlocProvider.of<WeatherCubit>(context);
 
-        if(state is Weatherloading ) return Center(
+        if(state is Weatherloading ) {return
 
-          child: CircularProgressIndicator(),
-        );
 
-        else
+          Scaffold(
+
+            appBar: AppBar(
+                elevation: 50,
+                backgroundColor: Colors.blue,
+                centerTitle: true,
+                actions: [
+                  IconButton(
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const Search(),
+                          ));
+                    },
+                    icon: const Icon(Icons.search, size: 30),
+                  )
+                ],
+                title: const Text(
+                  " Weather ",
+                  style: TextStyle(
+                      color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold),
+                )),
+            body: Center(child: CircularProgressIndicator()),
+
+          );
+
+
+        }
+
+        else if (state is Weathersucess) {
         return Scaffold(
           backgroundColor: Colors.orangeAccent.shade100,
 
@@ -66,6 +94,32 @@ class _weatherscreenState extends State<weatherscreen> {
 
           (blk.weatherModal1 == null) ? nodata() : NewWidgetmitdata(wth: blk.weatherModal1,),
 
+        );}
+
+        else return    Scaffold(
+          appBar: AppBar(
+              elevation: 50,
+              backgroundColor: Colors.blue,
+              centerTitle: true,
+              actions: [
+                IconButton(
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const Search(),
+                        ));
+                  },
+                  icon: const Icon(Icons.search, size: 30),
+                )
+              ],
+              title: const Text(
+                " Weather ",
+                style: TextStyle(
+                    color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold),
+              )),
+
+          body: nodata(),
         );
       },
     );
@@ -164,3 +218,6 @@ class NewWidgetmitdata extends StatelessWidget {
     ]);
   }
 }
+
+
+
